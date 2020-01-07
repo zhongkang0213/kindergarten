@@ -32,6 +32,7 @@ Route::group([
     // API
     $router->group(['prefix' => 'api', 'namespace' => 'API'], function (Router $router) {
         $router->get('classes/search', 'ClassesController@search');
+        $router->get('food_sub_tags/search', 'FoodSubTagsController@search');
     });
 
 });
