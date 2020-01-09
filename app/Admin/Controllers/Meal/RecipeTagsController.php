@@ -20,6 +20,18 @@ class RecipeTagsController extends AdminController
         $grid->column('created_at', __('创建时间'));
         $grid->column('updated_at', __('更新时间'));
 
+        $grid->disableCreateButton();
+        $grid->disableRowSelector();
+        $grid->disableColumnSelector();
+        //$grid->disableTools();
+        $grid->disableExport();
+
+        $grid->actions(function ($actions) {
+            $actions->disableDelete();
+            $actions->disableEdit();
+            $actions->disableView();
+        });
+
         return $grid;
     }
 
