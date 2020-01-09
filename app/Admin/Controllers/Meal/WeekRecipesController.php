@@ -8,6 +8,9 @@ use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use App\Admin\Models\Meal\WeekRecipes as MealWeekRecipes;
 
+use Encore\Admin\Widgets\InfoBox;
+use App\Admin\Widgets\Demo;
+
 class WeekRecipesController extends AdminController
 {
     protected $title = '一周食谱';
@@ -36,9 +39,15 @@ class WeekRecipesController extends AdminController
 
     protected function form()
     {
-        $form = new Form(new MealWeekRecipes);
+        $demo = new Demo;
 
-        return $form;
+        return $demo;
+        //$infoBox = new InfoBox('New Users', 'users', 'aqua', '/admin/users', '1024');
+
+        //return $infoBox;
+        //$form = new Form(new MealWeekRecipes);
+
+        //return $form;
     }
 
 }
