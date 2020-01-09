@@ -11,7 +11,7 @@ use App\Admin\Models\Meal\FoodTags as MealFoodTags;
 class FoodTagsController extends AdminController
 {
     protected $title = '标签';
-    
+
     protected function grid()
     {
         $grid = new Grid(new MealFoodTags);

@@ -19,6 +19,7 @@ Route::group([
 
         $router->resource('recipe_tags', 'RecipeTagsController');
         $router->resource('recipes', 'RecipesController');
+        $router->resource('week_recipes', 'WeekRecipesController');
     });
 
 

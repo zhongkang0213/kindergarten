@@ -19,6 +19,20 @@ class RecipesController extends AdminController
         $grid = new Grid(new MealRecipes);
         $grid->column('id', __('ID'))->sortable();
         $grid->column('name', __('名称'));
+        $grid->column('pinyin', __('拼音'));
+
+        $grid->actions(function ($actions) {
+            $actions->disableDelete();
+            $actions->disableEdit();
+            $actions->disableView();
+        });
+
+        $grid->disableCreateButton();
+        $grid->disableRowSelector();
+        $grid->disableColumnSelector();
+        //$grid->disableTools();
+        $grid->disableExport();
+
 
         $grid->column('food', __('食材'))->display(function ($food) {
 
@@ -28,10 +42,12 @@ class RecipesController extends AdminController
 
             return join('&nbsp;', $food);
         });
-        
+       
+        /*        
         $grid->column('created_at', __('创建时间'));
         $grid->column('updated_at', __('更新时间'));
-
+        */
+        
         return $grid;
     }
 
