@@ -31,6 +31,7 @@ Route::group([
     });
 
     // API
+/*
     $router->group(['prefix' => 'api', 'namespace' => 'API'], function (Router $router) {
         $router->get('classes/search', 'ClassesController@search');
         $router->get('food_sub_tags/search', 'FoodSubTagsController@search');
@@ -40,5 +41,22 @@ Route::group([
         $router->get('week_recipes/categories', 'WeekRecipesController@categories');
         $router->get('week_recipes', 'WeekRecipesController@store');
     });
+*/
+});
 
+Route::group([
+    'prefix'        => config('admin.route.prefix'),
+    'namespace'     => config('admin.route.namespace'),
+    //'middleware'    => config('admin.route.middleware'),
+], function (Router $router) {
+    // API
+    $router->group(['prefix' => 'api', 'namespace' => 'API'], function (Router $router) {
+        $router->get('classes/search', 'ClassesController@search');
+        $router->get('food_sub_tags/search', 'FoodSubTagsController@search');
+
+        $router->get('food/categories', 'FoodController@categories');
+        $router->get('recipes/categories', 'RecipesController@categories');
+        $router->get('week_recipes/categories', 'WeekRecipesController@categories');
+        $router->get('week_recipes', 'WeekRecipesController@store');
+    });
 });
