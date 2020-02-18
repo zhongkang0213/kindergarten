@@ -56,6 +56,8 @@ Route::group([
 
         $router->get('food/categories', 'FoodController@categories');
         $router->get('recipes/categories', 'RecipesController@categories');
+        $router->get('recipes/edit', 'RecipesController@edit');
+        $router->post('recipes/store', 'RecipesController@store');
         $router->get('week_recipes/categories', 'WeekRecipesController@categories');
         $router->get('week_recipes', 'WeekRecipesController@store');
     });
