@@ -43,6 +43,7 @@ class RecipesController extends Controller
             'recipe' => [
                 'id' => $recipe->id,
                 'name' => $recipe->name,
+                'tag_id' => $recipe->tag_id,
                 'foods' => $foods,
             ],
         ];
@@ -53,6 +54,9 @@ class RecipesController extends Controller
     public function store(Request $request)
     {
         $recipeId = $request->get('recipe_id');
+        $tagId = $request->get('tag_id');
+        $name = $request->get('name');
+        
         $foods = collect($request->get('foods'))->keyBy('id');
 
         $result = MealFood::whereIn('id', $foods->keys()->toArray())
@@ -72,13 +76,22 @@ class RecipesController extends Controller
             $recipeFoods[] = $recipeFood;
         }
 
-        DB::transaction(function() use ($recipeId, $recipeFoods) {
+        DB::transaction(function() use ($recipeId, $tagId, $name, $recipeFoods) {
             DB::table("meal_recipe_food")->where('recipe_id', $recipeId)
                 ->delete();
+
+            DB::table('meal_recipes')->where('id', $recipeId)
+                ->update(['tag_id' => $tagId, 'name' => $name]);
 
             DB::table("meal_recipe_food")->insert($recipeFoods);
         });
 
-        return ['data'=> $recipeFoods];
+        return [
+            'data'=> [
+                'tag_id' => $tagId,
+                'name' => $name,
+                'foods' => $recipeFoods
+            ]
+        ];
     }
 }
