@@ -30,6 +30,7 @@ class RecipesController extends Controller
         
             $food = [
                 'id' => $v->id,
+                'food_id' => $v->food_id,
                 'name' => $v->food_name,
                 'weight' => $v->food_weight,
                 'energy_kcal' => $v->food->energy_kcal,
