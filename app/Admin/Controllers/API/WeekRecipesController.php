@@ -68,7 +68,8 @@ class WeekRecipesController extends Controller
 
         foreach ($plan as $v) {
             $item = $v;
-            $item['recipe'] = $recipesMap[$v['recipe_id']]->toArray();
+            $item['name'] = $recipesMap[$v['recipe_id']]->name;
+            //$item['recipe'] = $recipesMap[$v['recipe_id']]->toArray();
             $data[$v['week_id']][$v['mark_id']][] = $item;
         }
 
@@ -96,7 +97,8 @@ class WeekRecipesController extends Controller
         $recipe = MealRecipes::find($recipeId);
 
         $data['detail_id'] = $detail->id;
-        $data['recipe'] = $recipe->toArray();
+        $data['name'] = $recipe->name;
+        //$data['recipe'] = $recipe->toArray();
 
         return ['data' => $data];
     }
