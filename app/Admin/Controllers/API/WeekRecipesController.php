@@ -96,7 +96,7 @@ class WeekRecipesController extends Controller
         $data['detail_id'] = $detail->id;
         $data['recipe'] = $recipe->toArray();
 
-        return $data;
+        return ['data' => $data];
     }
 
     public function delete(Request $request)
