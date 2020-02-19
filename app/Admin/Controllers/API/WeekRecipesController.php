@@ -37,6 +37,17 @@ class WeekRecipesController extends Controller
         return ['data' => $data];
     }
 
+    public function update(Request $request)
+    {
+        $detailId = $request->get('detail_id');
+        $weight = $request->get('weight');
+
+        MealWeekRecipeDetails::where('id', $detailId)
+            ->update(['weight' => $weight]);
+
+        return ['data' => ['detail_id' => $detailId]];
+    }
+
     public function edit(Request $request)
     {
         $planId = $request->get('plan_id');
@@ -78,12 +89,23 @@ class WeekRecipesController extends Controller
             'weight' => $weight,
         ];
 
-        MealWeekRecipeDetails::create($data);
+        $detail = MealWeekRecipeDetails::create($data);
 
         $recipe = MealRecipes::find($recipeId);
 
+        $data['detail_id'] = $detail->id;
         $data['recipe'] = $recipe->toArray();
 
         return $data;
+    }
+
+    public function delete(Request $request)
+    {
+        $detailId = $request->get('detail_id');
+
+        MealWeekRecipeDetails::where('id', $detailId)
+            ->delete();
+
+        return ['data' => ['detail_id' => $detailId]];
     }
 }
