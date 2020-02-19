@@ -67,10 +67,12 @@ class WeekRecipesController extends Controller
         $recipesMap = $recipes->keyBy('id');
 
         foreach ($plan as $v) {
-            $data[$v['week_id']][$v['mark_id']][] = $recipesMap[$v['recipe_id']]->toArray();
+            $item = $v;
+            $item['recipe'] = $recipesMap[$v['recipe_id']]->toArray();
+            $data[$v['week_id']][$v['mark_id']][] = $item;
         }
 
-        return $data;
+        return ['data' => $data];
     }
 
     public function store(Request $request)

@@ -14,6 +14,8 @@ use App\Admin\Widgets\Demo;
 class WeekRecipesController extends AdminController
 {
     protected $title = '一周食谱';
+
+    
                      
     protected function grid()
     {
