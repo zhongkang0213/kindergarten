@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Admin\Models\Meal\RecipeTags as MealRecipeTags;
 use App\Admin\Models\Meal\Recipes as MealRecipes;
+use App\Admin\Models\Meal\WeekRecipeDetails as MealWeekRecipeDetails;
 
 class WeekRecipesController extends Controller
 {
@@ -36,14 +37,53 @@ class WeekRecipesController extends Controller
         return ['data' => $data];
     }
 
+    public function edit(Request $request)
+    {
+        $planId = $request->get('plan_id');
+
+        $plan = MealWeekRecipeDetails::where('plan_id', $planId)
+              ->get();
+
+
+        foreach ($plan as $v) {
+            //$result[$v['week_id']][$v['mark_id']][] = $v;
+            $recipeIds[] = $v['recipe_id'];
+        }
+
+        $recipes = MealRecipes::whereIn('id', $recipeIds)
+                 ->get();
+
+        $recipesMap = $recipes->keyBy('id');
+
+        foreach ($plan as $v) {
+            $data[$v['week_id']][$v['mark_id']][] = $recipesMap[$v['recipe_id']]->toArray();
+        }
+
+        return $data;
+    }
+
     public function store(Request $request)
     {
-        $planId = $request->input('plan_id');
-        $weekId = $request->input('week_id');
-        $markId = $request->input('mark_id');
-        $recipeId = $request->input('recipe_id');
-        $weight = $request->input('weight');
-        //dd($request->input('recipe_id'));
-        dd(MealRecipes::find($recipeId));
+        $planId = $request->get('plan_id');
+        $weekId = $request->get('week_id');
+        $markId = $request->get('mark_id');
+        $recipeId = $request->get('recipe_id');
+        $weight = $request->get('weight');
+
+        $data = [
+            'plan_id' => $planId,
+            'week_id' => $weekId,
+            'mark_id' => $markId,
+            'recipe_id' => $recipeId,
+            'weight' => $weight,
+        ];
+
+        MealWeekRecipeDetails::create($data);
+
+        $recipe = MealRecipes::find($recipeId);
+
+        $data['recipe'] = $recipe->toArray();
+
+        return $data;
     }
 }

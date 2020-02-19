@@ -59,6 +59,7 @@ Route::group([
         $router->get('recipes/edit', 'RecipesController@edit');
         $router->post('recipes/store', 'RecipesController@store');
         $router->get('week_recipes/categories', 'WeekRecipesController@categories');
-        $router->get('week_recipes', 'WeekRecipesController@store');
+        $router->post('week_recipes/store', 'WeekRecipesController@store');
+        $router->get('week_recipes/edit', 'WeekRecipesController@edit');
     });
 });
