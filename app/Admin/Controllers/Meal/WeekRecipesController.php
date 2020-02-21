@@ -6,27 +6,34 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Encore\Admin\Layout\Content;
 use App\Admin\Models\Meal\WeekRecipes as MealWeekRecipes;
-
-use Encore\Admin\Widgets\InfoBox;
-use App\Admin\Widgets\Demo;
+use App\Admin\Widgets\Iframe;
 
 class WeekRecipesController extends AdminController
 {
     protected $title = '一周食谱';
 
-    
-                     
+    public function edit($id, Content $content)
+    {
+        $iframe = new Iframe([
+            'path' => "",
+            'params' => ['plan_id' => $id],
+        ]);
+
+        return $content->body($iframe);
+    }
+
     protected function grid()
     {
         $grid = new Grid(new MealWeekRecipes);
         $grid->column('id', __('ID'))->sortable();
         $grid->column('name', __('名称'));
-        $grid->column('计划时间', __('拼音'));
+        //$grid->column('计划时间', __('拼音'));
 
         $grid->actions(function ($actions) {
             $actions->disableDelete();
-            $actions->disableEdit();
+            //$actions->disableEdit();
             $actions->disableView();
         });
 
@@ -41,15 +48,11 @@ class WeekRecipesController extends AdminController
 
     protected function form()
     {
-        $demo = new Demo;
+        $form = new Form(new MealWeekRecipes);
 
-        return $demo;
-        //$infoBox = new InfoBox('New Users', 'users', 'aqua', '/admin/users', '1024');
+        $form->text('name', __('名称'));
 
-        //return $infoBox;
-        //$form = new Form(new MealWeekRecipes);
-
-        //return $form;
+        return $form;
     }
 
 }
