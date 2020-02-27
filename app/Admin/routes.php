@@ -42,6 +42,7 @@ Route::group([
         $router->get('week_recipes', 'WeekRecipesController@store');
     });
 */
+    $router->resource('/react', 'ReactController');
 });
 
 Route::group([

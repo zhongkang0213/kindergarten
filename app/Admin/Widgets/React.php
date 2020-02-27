@@ -5,9 +5,9 @@ namespace App\Admin\Widgets;
 use Illuminate\Contracts\Support\Renderable;
 use Encore\Admin\Widgets\Widget;
 
-class Demo extends Widget implements Renderable
+class React extends Widget implements Renderable
 {
-    protected $view = 'widgets.demo';
+    protected $view = 'widgets.react';
         
     public function render()
     {
