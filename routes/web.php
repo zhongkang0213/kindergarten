@@ -17,5 +17,5 @@ Route::get('/', function () {
 
 Route::get('/users', function() {
     $users = App\Admin\Models\Info\Students::all();
-    return $users;
+    return ['data' => $users];
 });

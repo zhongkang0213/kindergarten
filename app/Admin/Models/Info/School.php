@@ -2,9 +2,9 @@
 
 namespace App\Admin\Models\Info;
 
-use Illuminate\Databases\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class School extends Model
 {
-    protected $table = 'meal_schools';
+    protected $table = 'info_schools';
 }
