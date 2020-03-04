@@ -25,6 +25,7 @@ Route::group([
 
     // 信息
     $router->group(['prefix' => 'info', 'namespace' => 'Info'], function (Router $router) {
+        $router->resource('school', 'SchoolController');
         $router->resource('grades', 'GradesController');
         $router->resource('classes', 'ClassesController');
         $router->resource('students', 'StudentsController');
