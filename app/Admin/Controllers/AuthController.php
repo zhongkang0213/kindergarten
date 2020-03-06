@@ -21,6 +21,7 @@ class AuthController extends BaseAuthController
     */
 
     // 临时先重写改方法  因为找不到redirect guest写入的地方
+    /*
     protected function sendLoginResponse(Request $request)
     {
         admin_toastr(trans('admin.login_successful'));
@@ -33,4 +34,6 @@ class AuthController extends BaseAuthController
 
         return redirect($this->redirectPath());
     }
+*/
 }
+
