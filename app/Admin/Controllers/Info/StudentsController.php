@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers\Info;
 
-use Encore\Admin\Controllers\AdminController;
+use App\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
@@ -23,12 +23,16 @@ class StudentsController extends AdminController
         $grid->column('created_at', __('创建时间'));
         $grid->column('updated_at', __('更新时间'));
 
+        $grid->model()->where('school_id', $this->schoolId());
+
         return $grid;
     }
 
     protected function form()
     {
         $form = new Form(new InfoStudents);
+        
+        $form->hidden('school_id')->default($this->schoolId());
 
         $form->tab('宝宝信息', function($form) {
             $form->text('name', __('名称'));

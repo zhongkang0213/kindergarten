@@ -124,7 +124,9 @@ return [
         'providers' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model'  => Encore\Admin\Auth\Database\Administrator::class,
+                //'model'  => Encore\Admin\Auth\Database\Administrator::class,
+                // 更新为使用自定义模型
+                'model'  => App\Admin\Models\Auth\Administrator::class,
             ],
         ],
 
@@ -178,7 +180,9 @@ return [
 
         // User tables and model.
         'users_table' => 'admin_users',
-        'users_model' => Encore\Admin\Auth\Database\Administrator::class,
+        //'users_model' => Encore\Admin\Auth\Database\Administrator::class,
+        // 管理员模型
+        'users_model' => App\Admin\Models\Auth\Administrator::class,
 
         // Role table and model.
         'roles_table' => 'admin_roles',
