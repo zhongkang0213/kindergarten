@@ -56,11 +56,11 @@ Route::group([
 
     // 信息
     $router->group(['prefix' => 'info', 'namespace' => 'Info'], function (Router $router) {
-        $router->resource('school', 'SchoolController');
-        $router->resource('grades', 'GradesController');
+        $router->resource('schools', 'SchoolsController')->names('admin.info.schools');
+        $router->resource('grades', 'GradesController')->names('admin.info.grades');
         $router->resource('classes', 'ClassesController');
         $router->resource('students', 'StudentsController');
-        $router->resource('teachers', 'TeachersController');
+        $router->resource('teachers', 'TeachersController')->names('admin.info.teachers');
     });
 
     // API

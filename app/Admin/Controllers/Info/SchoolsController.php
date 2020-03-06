@@ -8,7 +8,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use App\Admin\Models\Info\School as InfoSchool;
 
-class SchoolController extends AdminController 
+class SchoolsController extends AdminController 
 {
     protected $title = '园所';
     
