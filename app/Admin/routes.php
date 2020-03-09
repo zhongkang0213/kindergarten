@@ -38,7 +38,6 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('admin.home');
-    $router->get('/{id}', 'HomeController@index')->name('admin.home');
 
     // 更新用户管里控制器
     $router->resource('auth/users', 'UserController')->names('admin.auth.users');
@@ -61,6 +60,12 @@ Route::group([
         $router->resource('classes', 'ClassesController');
         $router->resource('students', 'StudentsController');
         $router->resource('teachers', 'TeachersController')->names('admin.info.teachers');
+    });
+
+    // 贮藏
+    $router->group(['prefix' => 'storage', 'namespace' => 'Storage'], function (Router $router) {
+        $router->resource('supplies', 'SuppliesController');
+        $router->resource('stocks', 'StocksController');
     });
 
     // API
