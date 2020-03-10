@@ -13,4 +13,19 @@ class Stock extends Model
     {
         return $this->hasOne(Food::class, 'id', 'food_id');
     }
+
+    public function orders()
+    {
+        return $this->hasMany(StockOutOrder::class, 'stock_id', 'id');
+    }
+
+    public function getPriceAttribute($price)
+    {
+        return $price / 100;
+    }
+
+    public function getRemainAttribute($remain)
+    {
+        return $this->amount  - $this->deliver_amount;
+    }
 }
