@@ -22,6 +22,8 @@ class SuppliesController extends AdminController
         $grid->column('phone', __('电话'));
         $grid->column('contact', __('联系人'));
 
+        $grid->model()->where('school_id', $this->schoolId());
+
         $grid->disableExport();
 
         return $grid;
@@ -30,6 +32,8 @@ class SuppliesController extends AdminController
     public function form()
     {
         $form = new Form(new Supplier);
+
+        $form->hidden('school_id')->default($this->schoolId());
 
         $form->text('name', __('名称'))->required();
         $form->text('address', __('地址'))->required();
