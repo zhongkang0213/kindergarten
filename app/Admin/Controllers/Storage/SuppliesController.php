@@ -2,11 +2,12 @@
 
 namespace App\Admin\Controllers\Storage;
 
-use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use App\Admin\Controllers\AdminController;
 use App\Admin\Models\Storage\Supplier;
+
 
 class SuppliesController extends AdminController
 {
@@ -22,6 +23,8 @@ class SuppliesController extends AdminController
         $grid->column('phone', __('电话'));
         $grid->column('contact', __('联系人'));
 
+        $grid->model()->where('school_id', $this->schoolId());
+
         $grid->disableExport();
 
         return $grid;
@@ -30,6 +33,8 @@ class SuppliesController extends AdminController
     public function form()
     {
         $form = new Form(new Supplier);
+
+        $form->hidden('school_id')->default($this->schoolId());
 
         $form->text('name', __('名称'))->required();
         $form->text('address', __('地址'))->required();
