@@ -2,9 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "mobx-react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-//import Home from "./home";
-import List from "./components/List";
-import StoreList from "./stores/List";
+import Store from './store';
+import App from './pages/app';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -19,18 +18,10 @@ require("./bootstrap");
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const stores = {
-    List: StoreList
-};
-
 if (document.getElementById("example")) {
     ReactDOM.render(
-        <Provider {...stores}>
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path="/admin/react" component={List} />
-                </Switch>
-            </BrowserRouter>
+        <Provider {...Store}>
+            <App/>
         </Provider>,
 
         document.getElementById("example")

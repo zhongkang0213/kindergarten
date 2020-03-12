@@ -1,0 +1,57 @@
+.ant-menu-item:hover,
+.ant-menu-item-active,
+.ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.ant-menu-submenu-active,
+.ant-menu-submenu-title:hover {
+    color: rgba(0, 0, 0, 0.65)!important;
+}
+
+.ant-menu-submenu-vertical > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::after,
+.ant-menu-submenu-vertical-left > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::after,
+.ant-menu-submenu-vertical-right > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::after,
+.ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::after,
+.ant-menu-submenu-vertical > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before,
+.ant-menu-submenu-vertical-left > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before,
+.ant-menu-submenu-vertical-right > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before,
+.ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before {
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.65)), to(rgba(0, 0, 0, 0.65)))!important;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65))!important;
+}
+
+.ant-input-number-focused {
+    border-color: none!important;
+    border-right-width: 1px !important;
+    outline: 0;
+    -webkit-box-shadow: none!important;
+            box-shadow: none!important;
+  }
+
+  .ant-input-number:hover {
+    border-color: none!important;
+    border-right-width: 1px !important;
+  }
+  .ant-input-number:focus {
+    border-color: none!important;
+    border-right-width: 1px !important;
+    outline: 0;
+    -webkit-box-shadow: none!important;
+            box-shadow: none!important;
+  }
+  .ant-menu-item:active,
+.ant-menu-submenu-title:active {
+  background: #ffffff!important;
+}
+.ant-tabs-tab-active {
+  color: rgba(0, 0, 0, 0.65)!important;
+  font-weight: 500;
+}
+/* .ant-input-number-input::-moz-placeholder {
+    color: none!important;
+    opacity: 1;
+  }
+  .ant-input-number-input:-ms-input-placeholder {
+    color: none!important;
+  }
+  .ant-input-number-input::-webkit-input-placeholder {
+    color: none!important;
+  } */

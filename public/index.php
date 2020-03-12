@@ -1,5 +1,8 @@
 <?php
-
+$origin = "*";
+header("Access-Control-Allow-Origin:{$origin}");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization");
+header("Access-Control-Allow-Credentials:true");
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
